@@ -5,7 +5,7 @@ cd exmap-dev
 cd ../
 
 
-for th in 8 32 64 128; do
+for th in 8 16 32 64 128; do
 exmap-dev/eval/test-bench-alloc $th >> tests/per$th.txt
 done
 
@@ -15,6 +15,6 @@ cd exmap-master
 ./load.sh
 cd ../
 
-for th in 8 32 64 128; do
+for th in 8 16 32 64 128; do
 exmap-dev/eval/test-bench-alloc $th >> tests/def$th.txt
 done
