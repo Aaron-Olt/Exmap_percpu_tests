@@ -163,7 +163,7 @@ int main(int argc, char *argv[]) {
 	auto last_shootdowns = readTLBShootdownCount();
 	int secs = 0;
 	//output_legend();
-	while (secs < 10) {
+	while (secs < 300) {
 	        perf_event_start(&perf);
 			struct timespec req = {.tv_sec =1, .tv_nsec = 0 * 1000 * 1000};
 			nanosleep(&req, NULL);
