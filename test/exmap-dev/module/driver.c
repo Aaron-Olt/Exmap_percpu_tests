@@ -117,7 +117,7 @@ struct page_bundle pop_bundle(struct exmap_ctx* ctx) {
 void push_page(struct page* page, struct page_bundle* bundle, struct exmap_ctx* ctx) {
 	/* pr_info("push_page: %lx, bundle %lx, count %lu, global %lx", page, bundle, bundle->count, global_free_list); */
 	struct  page_bundle mybundle = get_cpu_var(per_cpu_local_pages);
-	if (mybundle.stack) {
+	if (!mybundle.stack) {
 		mybundle.stack = page;
 		put_cpu_var(per_cpu_local_pages);
 		return;
@@ -153,7 +153,7 @@ again:
 		return page;
 	}
 
-	mybundle = pop_bundle(ctx);
+	*mybundle = pop_bundle(ctx);
 	goto again;
 }
 
